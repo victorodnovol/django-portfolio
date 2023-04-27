@@ -7,3 +7,4 @@ class Project(models.Model):
     description = models.TextField()
     technology = models.CharField(max_length=20)
     image = models.CharField(max_length=100)
+    github = models.CharField(max_length=100)
