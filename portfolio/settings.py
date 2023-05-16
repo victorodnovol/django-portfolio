@@ -21,10 +21,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-+0@37w7cg49ap7d!*ryo6a&j6f31@1htz&lc@=&j7ot(de9yqn'
 
+# Try to pass secret key as environment variable in production
+# try:
+#     SECRET_KEY = os.environ["SECRET_KEY"]
+# except KeyError as e:
+#     raise RuntimeError("Could not find a SECRET_KEY in environment") from e
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.98', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = []
 
 # Application definition
 

@@ -3,3 +3,4 @@ portfolio/__pycache__
 projects/__pycache__
 projects/migrations
 db.sqlite3
+config/gunicorn/__pycache__
