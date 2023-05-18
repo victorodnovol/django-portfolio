@@ -17,24 +17,27 @@ COPY --chown=umba pyproject.toml constraints.txt ./
 RUN python -m pip install --upgrade pip setuptools && \
     python -m pip install --no-cache-dir -c constraints.txt ".[dev]"
 
-COPY --chown=umba src/ src/
+# Copy project src files
+COPY --chown=umba portfolio/ portfolio/
+COPY --chown=umba projects/ projects/
+    
 # Copy gunicorn config
 COPY --chown=umba config/ config/
 # make sure log and var directories exist
-RUN mkdir -pv /var/{log,run}/gunicorn/
+# RUN mkdir -pv /var/{log,run}/gunicorn/
 
 # TODO: unit testing
 # COPY --chown=umba test/ test/
 
-RUN python -m pip install . -c constraints.txt && \
-    # python -m pytest test/unit/ && \
-    python -m flake8 src/ && \
-    python -m isort src/ --check && \
-    python -m black src/ --check --quiet && \
-    # below is an example of how to disable false positive bugs
-    # python -m pylint src/ --disable=C0114,C0116,R1705 && \
-    python -m pylint src/ --disable=C0114,C0116,R1705 && \
-    python -m bandit -r src/ --quiet
+# RUN python -m pip install . -c constraints.txt && \
+# RUN python -m flake8 portfolio/ && \
+#     # python -m pytest test/unit/ && \
+#     python -m isort portfolio/ --check && \
+#     python -m black portfolio/ --check --quiet && \
+#     # below is an example of how to disable false positive bugs
+#     # python -m pylint portfolio/ --disable=C0114,C0116,R1705 && \
+#     python -m pylint portfolio/ --disable=C0114,C0116,R1705 && \
+#     python -m bandit -r portfolio/ --quiet
 
 # TODO: update gunicorn config and move CMD to production dockerfile
 # CMD ["gunicorn", "-c", "config/gunicorn/dev.py"]

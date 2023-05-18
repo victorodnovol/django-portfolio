@@ -1,0 +1,9 @@
+---
+services:
+  web-service:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile.dev
+    ports:
+      - "80:8000"
+    command: "gunicorn -c config/gunicorn/dev.py"

@@ -1,0 +1,3 @@
+**/__pycache__
+# Add the db file too temporarily, to let the build work
+# **/*db*

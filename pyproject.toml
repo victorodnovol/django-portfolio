@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "django-portfolio"
+version = "1.0.0"
+dependencies = [
+    "Django",
+    "gunicorn",
+]
+
+[project.optional-dependencies]
+dev = [
+    "bandit",
+    "black",
+    "flake8",
+    "isort",
+    "pylint",
+    "pytest",
+    "pytest-timeout",
+    "requests",
+]
