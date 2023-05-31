@@ -21,3 +21,6 @@ dev = [
     "pytest-timeout",
     "requests",
 ]
+
+[tool.setuptools.package-data]
+"*" = ["*.html", "db.sqlite3"]

@@ -4,3 +4,12 @@ projects/__pycache__
 projects/migrations
 db.sqlite3
 config/gunicorn/__pycache__
+web/dist
+web/src/django_portfolio.egg-info
+web/src/portfolio/__pycache__
+web/src/projects/__pycache__
+web/src/projects/migrations/__pycache__
+web/src/static/admin
+web/venv
+web/build/lib
+web/config/gunicorn/__pycache__
