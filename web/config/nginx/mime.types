@@ -11,6 +11,7 @@ types {
   # text/mathml                           mml;
   image/png                             png;
   image/x-icon                          ico;
+  image/svg+xml                           svg;
   # image/x-jng                           jng;
   # image/vnd.wap.wbmp                    wbmp;
   # application/java-archive              jar war ear;

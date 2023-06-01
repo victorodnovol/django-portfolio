@@ -15,6 +15,7 @@ ENV VIRTUALENV=/home/umba/venv
 # ENV echo "export SECRET_KEY='$(openssl rand -hex 40)'" > .DJANGO_SECRET_KEY
 RUN python3 -m venv $VIRTUALENV
 ENV PATH="$VIRTUALENV/bin:$PATH"
+ENV DJANGO_ENABLE_DEBUG="TRUE"
 
 COPY --chown=umba pyproject.toml constraints.txt ./
 RUN python -m pip install --upgrade pip setuptools && \
@@ -43,10 +44,10 @@ RUN python -m pip wheel --wheel-dir dist/ . -c constraints.txt
 
 
 ########################################
-# Stage stage01
+# Stage deploy
 ########################################
 
-FROM python:3.10.11-slim-bullseye AS stage01
+FROM python:3.10.11-slim-bullseye AS deploy
 
 RUN apt-get update && \
     apt-get upgrade --yes

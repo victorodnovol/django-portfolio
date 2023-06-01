@@ -1,6 +1,7 @@
 ---
 services:
   web-service:
+    image: umba/django-portfolio:latest
     build: ./web
     hostname: webapp
     command: "gunicorn -c config/gunicorn/dev.py"
