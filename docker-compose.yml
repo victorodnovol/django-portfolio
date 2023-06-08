@@ -5,6 +5,7 @@ services:
     build: ./web
     hostname: webapp
     command: "gunicorn -c config/gunicorn/dev.py"
+    env_file: .env
     networks:
       - backend
   web-proxy:
