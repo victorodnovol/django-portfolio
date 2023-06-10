@@ -11,8 +11,6 @@ USER umba
 WORKDIR /home/umba
 
 ENV VIRTUALENV=/home/umba/venv
-# TODO: export SECRET_KEY in production
-# ENV echo "export SECRET_KEY='$(openssl rand -hex 40)'" > .DJANGO_SECRET_KEY
 RUN python3 -m venv $VIRTUALENV
 ENV PATH="$VIRTUALENV/bin:$PATH"
 ENV DJANGO_ENABLE_DEBUG="TRUE"
@@ -24,10 +22,6 @@ RUN python -m pip install --upgrade pip setuptools && \
 # Copy project src files
 COPY --chown=umba src/ src/
     
-
-# make sure log and var directories exist
-# RUN mkdir -pv /var/{log,run}/gunicorn/
-
 # TODO: unit testing
 # COPY --chown=umba test/ test/
 
@@ -57,15 +51,11 @@ USER umba
 WORKDIR /home/umba
 
 ENV VIRTUALENV=/home/umba/venv
-# TODO: export SECRET_KEY in production
-# ENV echo "export SECRET_KEY='$(openssl rand -hex 40)'" > .DJANGO_SECRET_KEY
 RUN python3 -m venv $VIRTUALENV
 ENV PATH="$VIRTUALENV/bin:$PATH"
 
 # Copy app
 COPY --chown=umba --from=builder /home/umba/dist/django_portfolio*.whl /home/umba
-# Copy project config
-COPY --chown=umba config/ config/
 
 RUN python -m pip install --upgrade pip setuptools && \
     python -m pip install --no-cache-dir django_portfolio*.whl
