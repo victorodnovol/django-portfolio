@@ -2,9 +2,10 @@
 services:
   web-service:
     image: umba/django-portfolio:latest
-    build: ./web
+    volumes:
+      - ./web/config/gunicorn/dev.py:/home/umba/web/config/gunicorn/dev.py
     hostname: webapp
-    command: "gunicorn -c config/gunicorn/dev.py"
+    command: "gunicorn -c web/config/gunicorn/dev.py"
     env_file: .env
     networks:
       - backend
@@ -15,7 +16,7 @@ services:
       - ./web/config/nginx/mime.types:/etc/nginx/mime.types:ro
       - ./web/src/static:/data/www/static
     ports:
-      - "80:80"
+      - "7890:80"
     networks:
       - backend
 networks:
